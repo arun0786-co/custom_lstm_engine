@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install numpy torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install numpy && pip install torch --index-url https://download.pytorch.org/whl/cpu
       - run: cd python && python compare_torch.py
