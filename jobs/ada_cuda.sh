@@ -12,7 +12,8 @@
 # build, check against torch, benchmark against cudnn on a 2080 ti.
 #   sbatch jobs/ada_cuda.sh
 set -uo pipefail
-module load u18/cuda/12.4 2>/dev/null || module load cuda 2>/dev/null || true
+source /etc/profile.d/modules.sh 2>/dev/null || true
+module load u22/cuda/12.6 || exit 1
 which nvcc || { echo "no nvcc"; exit 1; }
 nvidia-smi --query-gpu=name,driver_version --format=csv,noheader
 SCR=""
