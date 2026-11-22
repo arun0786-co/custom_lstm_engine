@@ -10,6 +10,11 @@ build/test_gradients: tests/test_gradients.cpp src/lstm_cpu.cpp include/lstm.h |
 build/liblstm_cpu.so: src/c_api.cpp src/lstm_cpu.cpp include/lstm.h | build
 	$(CXX) $(CXXFLAGS) -fPIC -shared src/c_api.cpp src/lstm_cpu.cpp -o $@
 
+build/liblstm_cuda.so: src/lstm_cuda.cu | build
+	$(NVCC) $(NVFLAGS) -Xcompiler -fPIC -shared src/lstm_cuda.cu -lcublas -o $@
+
+cuda: build/liblstm_cuda.so
+
 build:
 	mkdir -p build
 
@@ -19,4 +24,4 @@ test: build/test_gradients build/liblstm_cpu.so
 clean:
 	rm -rf build
 
-.PHONY: test clean
+.PHONY: test clean cuda
