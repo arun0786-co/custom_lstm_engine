@@ -1,0 +1,73 @@
+{
+ "gpu": "NVIDIA GeForce RTX 2080 Ti",
+ "torch": "2.14.1+cu126",
+ "cudnn": 91002,
+ "rows": [
+  {
+   "T": 50,
+   "B": 32,
+   "I": 128,
+   "H": 128,
+   "ours_ms": 1.709,
+   "cudnn_ms": 1.86,
+   "ours_vs_cudnn": 1.088,
+   "max_rel_err_h": 7.313863079616567e-06,
+   "max_rel_err_dw_hh": 5.4945739975664765e-06
+  },
+  {
+   "T": 100,
+   "B": 64,
+   "I": 256,
+   "H": 256,
+   "ours_ms": 5.276,
+   "cudnn_ms": 6.187,
+   "ours_vs_cudnn": 1.173,
+   "max_rel_err_h": 1.9878163470821164e-07,
+   "max_rel_err_dw_hh": 1.4101292435952928e-06
+  },
+  {
+   "T": 100,
+   "B": 64,
+   "I": 512,
+   "H": 512,
+   "ours_ms": 11.063,
+   "cudnn_ms": 11.847,
+   "ours_vs_cudnn": 1.071,
+   "max_rel_err_h": 2.123393016972841e-07,
+   "max_rel_err_dw_hh": 2.4647922600706806e-06
+  },
+  {
+   "T": 200,
+   "B": 32,
+   "I": 512,
+   "H": 1024,
+   "ours_ms": 31.608,
+   "cudnn_ms": 33.409,
+   "ours_vs_cudnn": 1.057,
+   "max_rel_err_h": 2.0096926789392455e-07,
+   "max_rel_err_dw_hh": 3.7191259707469726e-06
+  },
+  {
+   "T": 35,
+   "B": 20,
+   "I": 650,
+   "H": 650,
+   "ours_ms": 3.029,
+   "cudnn_ms": 3.271,
+   "ours_vs_cudnn": 1.08,
+   "max_rel_err_h": 2.0143561130225862e-07,
+   "max_rel_err_dw_hh": 1.3831751175530371e-06
+  },
+  {
+   "T": 500,
+   "B": 8,
+   "I": 64,
+   "H": 128,
+   "ours_ms": 10.873,
+   "cudnn_ms": 2.487,
+   "ours_vs_cudnn": 0.229,
+   "max_rel_err_h": 9.239352039003279e-06,
+   "max_rel_err_dw_hh": 4.875084414379671e-06
+  }
+ ]
+}
