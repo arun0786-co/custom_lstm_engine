@@ -7,10 +7,13 @@ NVFLAGS ?= -O3 -std=c++17 -Iinclude -arch=sm_75 -gencode arch=compute_61,code=sm
 build/test_gradients: tests/test_gradients.cpp src/lstm_cpu.cpp include/lstm.h | build
 	$(CXX) $(CXXFLAGS) tests/test_gradients.cpp src/lstm_cpu.cpp -o $@
 
+build/liblstm_cpu.so: src/c_api.cpp src/lstm_cpu.cpp include/lstm.h | build
+	$(CXX) $(CXXFLAGS) -fPIC -shared src/c_api.cpp src/lstm_cpu.cpp -o $@
+
 build:
 	mkdir -p build
 
-test: build/test_gradients
+test: build/test_gradients build/liblstm_cpu.so
 	./build/test_gradients
 
 clean:
