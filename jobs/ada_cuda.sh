@@ -12,9 +12,10 @@
 # build, check against torch, benchmark against cudnn on a 2080 ti.
 #   sbatch jobs/ada_cuda.sh
 set -uo pipefail
-source /etc/profile.d/modules.sh 2>/dev/null || true
-module load u22/cuda/12.6 || exit 1
-which nvcc || { echo "no nvcc"; exit 1; }
+# environment modules are broken on the u22 nodes; cuda 12.9 is installed directly
+export PATH=/usr/local/cuda/bin:$PATH LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH:-}
+command -v nvcc || { echo "no nvcc"; exit 1; }
+nvcc --version | tail -1
 nvidia-smi --query-gpu=name,driver_version --format=csv,noheader
 SCR=""
 for base in /scratch /ssd_scratch /tmp; do
